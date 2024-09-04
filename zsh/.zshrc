@@ -36,14 +36,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Custom aliases and functions
 alias facil123="cd $FACIL123"
 alias aly="cd $HOME/Desktop/aly"
-alias localhost="facil123 && bin/dev"
-alias google="flatpak run com.google.Chrome"
 alias fucking="sudo"
 alias todo="nvim ~/Desktop/aly/todo.md"
-alias zshconfig="nvim ~/.zshrc"
 alias nvimdir="cd ~/.config/nvim/"
-alias nvimconfig="nvim ~/.config/nvim/init.lua"
-alias coverage="facil123 && xdg-open coverage/"
+alias coverage="cd $FACIL123 && xdg-open coverage/"
 
 # needs a parameter <path> to work
 function yw() {
