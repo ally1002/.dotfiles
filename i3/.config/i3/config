@@ -13,6 +13,11 @@ set $mod Mod4
 exec_always feh --bg-center ~/Desktop/aly/background.jpg
 exec_always xset r rate 300 30
 
+# Handle Borders
+for_window [class="^.*"] border pixel 2
+                          # class                 border  backgr. text    indicator child_border
+for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
@@ -171,7 +176,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        position top
         output primary
         tray_output none
         separator_symbol |
