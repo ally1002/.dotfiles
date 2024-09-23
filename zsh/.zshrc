@@ -25,6 +25,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Custom aliases and functions
 alias facil123="cd $FACIL123"
 alias aly="cd $HOME/Desktop/aly"
+alias dotfiles="cd $HOME/.dotfiles"
 alias fucking="sudo"
 alias todo="nvim ~/Desktop/aly/todo.md"
 alias nvimdir="cd ~/.config/nvim/"
