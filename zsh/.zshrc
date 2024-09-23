@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$PATH"
 
 export FACIL123="$HOME/Desktop/$USER/facil123"
 
-ZSH_THEME=kafeitu
+ZSH_THEME=fwalch
 
 plugins=(
     git
