@@ -16,7 +16,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-
 . "$HOME/.asdf/asdf.sh"
 
 # Home brew configuration
