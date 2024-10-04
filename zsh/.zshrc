@@ -21,6 +21,8 @@ source $ZSH/oh-my-zsh.sh
 # Home brew configuration
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 # Custom aliases and functions
 alias facil123="cd $FACIL123"
 alias aly="cd $HOME/Desktop/aly"

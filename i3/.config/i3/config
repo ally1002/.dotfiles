@@ -17,6 +17,7 @@ set $secondMonitor HDMI-1
 
 exec_always feh --bg-center ~/Desktop/aly/background.jpg
 exec_always xset r rate 300 30
+exec_always setxkbmap -option caps:ctrl_modifier
 
 # Handle Borders
 for_window [class="^.*"] border pixel 2
