@@ -1,0 +1,59 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+COLORLESS='\033[0m'
+
+ERR="${RED}ERROR${COLORLESS}"
+SUCCESS="${GREEN}SUCCESS${COLORLESS}"
+
+[ "$#" -lt 2 ] && { echo "Two branches at least"; exit 1; }
+
+merged_branches=()
+err_found=0
+
+for ((i=1; i<$#; i++)); do
+  [ $err_found -eq 1 ] && break
+
+  source_branch=${!i}
+  source_index=$((i+1))
+  target_branch=${!source_index}
+
+  echo "----------------------------------------------------"
+  echo -e "${GREEN}$source_branch ~> $target_branch${COLORLESS}\n"
+
+  # Checkout in target_branch, if branch specified is not valid
+  # it will echo error and exit from the script
+  git checkout "$target_branch"
+  if [ $? -ne 0 ]; then
+    err_found=1
+    echo -e "$ERR; into ~> 'git checkout "$target_branch"'"
+    break
+  fi
+
+  # Merge source_branch into target_branch, if it has conflicts or errors
+  # it will echo error and exit from the script
+  git merge --no-edit --no-ff "$source_branch"
+  if [ $? -ne 0 ]; then
+    err_found=1
+    echo -e "$ERR; Resolve the conflicts first"
+    echo "~> To reproduce the conflict you can use: git merge $source_branch"
+    git merge --abort
+    break
+  fi
+
+  echo -e "\n"
+
+  # When it runs with no conflicts or errors, adds into merged_branches list and print a success message
+  merged_branches+=("git push origin ${target_branch}")
+  echo -e "$SUCCESS; Merge completed with no problem"
+  echo -e "~> Merged $source_branch into $target_branch\n"
+done
+
+echo -e "\n"
+
+# It is going to print every branch that have merged successfully
+# to inform that you need to push it to origin, it only merges it locally,
+# so if you does not want to keep the merge commit, you can discard it with a reset --hard
+echo -e "${GREEN}Merged branches${COLORLESS}"
+printf '%s\n' "${merged_branches[@]}"
