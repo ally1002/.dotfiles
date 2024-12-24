@@ -118,6 +118,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+x exec "i3lock --show-failed-attempts --image ~/Desktop/aly/lockmaybe.png"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -165,4 +167,4 @@ bindsym $mod+$mod2+r exec --no-startup-id xrandr --output $secondMonitor --auto 
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, resize set 1200 800, move position center
