@@ -7,7 +7,6 @@ ZSH_THEME=fwalch
 
 plugins=(
     git
-    asdf
     zsh-autosuggestions
     F-Sy-H # fast-syntax-highlighting plugin
 )
@@ -22,6 +21,8 @@ source $ZSH/oh-my-zsh.sh
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 bindkey -s ^f "tmux-sessionizer\n"
+
+bindkey '^ ' autosuggest-execute
 
 # Custom aliases and functions
 alias facil123="cd $FACIL123"
